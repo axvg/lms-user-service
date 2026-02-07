@@ -7,6 +7,7 @@ import com.lms.user_service.infrastructure.persistence.mapper.UserEntityMapper;
 import com.lms.user_service.infrastructure.persistence.repository.SpringDataUserRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -32,5 +33,10 @@ public class UserRepositoryAdapter implements UserRepository {
     @Override
     public Optional<User> findByEmail(String email) {
         return repository.findByEmail(email).map(UserEntityMapper::toDomain);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repository.findAll().stream().map(UserEntityMapper::toDomain).toList();
     }
 }

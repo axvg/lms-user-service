@@ -6,6 +6,7 @@ import com.lms.user_service.infrastructure.web.dto.UserStatusRequest;
 import com.lms.user_service.domain.model.User;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/admin/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AdminUserController {
     private final UserCommandService userCommandService;
 

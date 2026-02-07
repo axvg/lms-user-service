@@ -25,4 +25,9 @@ public class UserQueryService {
         return repository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException(email));
     }
+
+    @Transactional(readOnly = true)
+    public Iterable<User> getAllUsers() {
+        return repository.findAll();
+    }
 }
